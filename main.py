@@ -2,17 +2,13 @@
 from variables import url_lottery_guru, keno_logo_link
 
 ## Import Libraries
-import random
-from random import choice
-
 import datetime as dt
 
 import requests
 from bs4 import BeautifulSoup as BS
 import lxml
-
-import re
 import pandas as pd
+
 
 
 lottery_guru = requests.get(url_lottery_guru)
@@ -32,11 +28,9 @@ draw_dates = keno_card.find_all("div", class_="lg-time")
 
 last_result_date = draw_dates[0].text.strip()
 last_result_list = last_result_date.split("\n")
-print(last_result_list)
 
 next_result_date = draw_dates[1].text.strip()
 next_result_list = next_result_date.split("\n")
-print(next_result_list)
 
 
 ## Get the latest Keno Winning Numbers
@@ -57,11 +51,10 @@ new_row = {'Weekday' : last_result_list[2] ,
            'My Numbers': None
            }
 
-print(new_row)
 
 keno_df = pd.read_csv('data/keno_lottery_stats.csv')
 print(keno_df.head())
-print(keno_df.columns)
+
 last_winning_numbers = keno_df.loc[-1:]["Numbers"][0]
 last_winning_numbers= last_winning_numbers.replace("[", "", 3)
 last_winning_numbers = last_winning_numbers.replace("]", "", 2)
@@ -74,6 +67,7 @@ print(keno_numbers)
 if last_winning_numbers == keno_numbers:
     print("No Draw Yet")
 else:
+    print("Next lottery draw has occurred")
     keno_df = keno_df.append(new_row, ignore_index=True)
 
     ## Save the updated file to the data folder
