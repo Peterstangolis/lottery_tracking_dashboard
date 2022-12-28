@@ -21,7 +21,6 @@ if lottery_guru.status_code == 200:
     print("Authorized")
 
 
-
 soup_guru_2 = BS(lottery_guru.text, "lxml")
 
 ## Retrieve all the cards from the site
@@ -50,7 +49,6 @@ for n in nums[0].find_all("li"):
 print(keno_numbers)
 
 
-
 new_row = {'Weekday' : last_result_list[2] ,
            'Draw Date' : last_result_list[3],
            'Time of day' : last_result_list[-1] ,
@@ -61,8 +59,29 @@ new_row = {'Weekday' : last_result_list[2] ,
 
 print(new_row)
 
+keno_df = pd.read_csv('data/keno_lottery_stats.csv')
+print(keno_df.head())
+print(keno_df.columns)
+last_winning_numbers = keno_df.loc[-1:]["Numbers"][0]
+last_winning_numbers= last_winning_numbers.replace("[", "", 3)
+last_winning_numbers = last_winning_numbers.replace("]", "", 2)
+last_winning_numbers = [int(e) for e in last_winning_numbers.split(",")]
+print(last_winning_numbers)
+print(keno_numbers)
+
+
+## Add the new row of Keno numbers to the file if the last numbers do not equal the winning numbers
+if last_winning_numbers == keno_numbers:
+    print("No Draw Yet")
+else:
+    keno_df = keno_df.append(new_row, ignore_index=True)
+
+    ## Save the updated file to the data folder
+    keno_df.to_csv('data/keno_lottery_stats.csv', index=False)
+
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
+    print(" ")
 
 
 
