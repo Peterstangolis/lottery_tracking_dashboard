@@ -1,4 +1,5 @@
-
+## import variables
+from variables import url_lottery_guru
 
 ## Import Libraries
 import random
