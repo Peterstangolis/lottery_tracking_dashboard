@@ -16,7 +16,6 @@ lottery_guru = requests.get(url_lottery_guru)
 if lottery_guru.status_code == 200:
     print("Authorized")
 
-
 soup_guru_2 = BS(lottery_guru.text, "lxml")
 
 ## Retrieve all the cards from the site
@@ -42,7 +41,7 @@ for n in nums[0].find_all("li"):
 
 print(keno_numbers)
 
-
+## New Row to Add to CSV file
 new_row = {'Weekday' : last_result_list[2] ,
            'Draw Date' : last_result_list[3],
            'Time of day' : last_result_list[-1] ,
@@ -51,12 +50,10 @@ new_row = {'Weekday' : last_result_list[2] ,
            'My Numbers': None
            }
 
-
 keno_df = pd.read_csv('data/keno_lottery_stats.csv')
-print(keno_df.head())
 
-last_winning_numbers = keno_df.loc[-1:]["Numbers"][0]
-last_winning_numbers= last_winning_numbers.replace("[", "", 3)
+last_winning_numbers = keno_df["Numbers"].iloc[-1]
+last_winning_numbers = last_winning_numbers.replace("[", "", 3)
 last_winning_numbers = last_winning_numbers.replace("]", "", 2)
 last_winning_numbers = [int(e) for e in last_winning_numbers.split(",")]
 print(last_winning_numbers)
