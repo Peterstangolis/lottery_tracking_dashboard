@@ -15,7 +15,14 @@ import re
 import pandas as pd
 
 
+lottery_guru = requests.get(url_lottery_guru)
+if lottery_guru.status_code != 200:
+    break
 
+soup_guru_2 = BS(lottery_guru.text, "lxml")
+
+## Retrieve all the cards from the site
+lottery_cards = soup_guru_2.find_all('div', class_ = 'lg-card lg-link')
 
 
 
@@ -26,6 +33,6 @@ import pandas as pd
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    print('PyCharm')
 
 

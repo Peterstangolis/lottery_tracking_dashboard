@@ -1,6 +1,6 @@
 url_lottery_guru = 'https://lotteryguru.com/ontario-lottery-results'
 
-
+keno_logo_link = 'https://lotteryguru.com/pict/96850/ca-keno-2x-png'
 
 list_of_lotteries = {
     "Lotto 6/49": {"selections": 6,
