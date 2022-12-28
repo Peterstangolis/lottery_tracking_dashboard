@@ -10,7 +10,6 @@ import lxml
 import pandas as pd
 
 
-
 lottery_guru = requests.get(url_lottery_guru)
 
 if lottery_guru.status_code == 200:
@@ -41,14 +40,36 @@ for n in nums[0].find_all("li"):
 
 print(keno_numbers)
 
+played_lottery = True
+if played_lottery == True:
+    my_numbers = [[8, 12, 44, 47, 69],[5, 11, 23]]
+    bet_amount = [2.00, 2.00]
+
+    matched_picks_one = [x for x in my_numbers[0] if x in keno_numbers]
+    matched_picks_two = [x for x in my_numbers[1] if x in keno_numbers]
+
+    matched_vs_picked_one = f'{len(matched_picks_one)}/{len(my_numbers[0])}'
+    matched_vs_picked_two = f'{len(matched_picks_two)}/{len(my_numbers[1])}'
+else:
+    my_numbers = None
+    bet_amount = None
+    matched_picks_one = None
+    matched_picks_two = None
+    matched_vs_picked_one = None
+    Matched_vs_picked_two = None
+
 ## New Row to Add to CSV file
 new_row = {'Weekday' : last_result_list[2] ,
            'Draw Date' : last_result_list[3],
            'Time of day' : last_result_list[-1] ,
            'Numbers' : keno_numbers,
-           'Played' : False,
-           'My Numbers': None
+           'Played' : played_lottery,
+           'My Numbers': my_numbers,
+           'Bet Amounts': bet_amount,
+           'Matched Numbers' : [matched_picks_one, matched_picks_two],
+           'Correct vs Picked' : [matched_vs_picked_one, matched_vs_picked_two]
            }
+
 
 keno_df = pd.read_csv('data/keno_lottery_stats.csv')
 
@@ -57,7 +78,7 @@ last_winning_numbers = last_winning_numbers.replace("[", "", 3)
 last_winning_numbers = last_winning_numbers.replace("]", "", 2)
 last_winning_numbers = [int(e) for e in last_winning_numbers.split(",")]
 print(last_winning_numbers)
-print(keno_numbers)
+
 
 
 ## Add the new row of Keno numbers to the file if the last numbers do not equal the winning numbers
@@ -70,7 +91,9 @@ else:
     ## Save the updated file to the data folder
     keno_df.to_csv('data/keno_lottery_stats.csv', index=False)
 
-# Press the green button in the gutter to run the script.
+
+
+
 if __name__ == '__main__':
     print(" ")
 

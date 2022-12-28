@@ -1,3 +1,3 @@
-Weekday,Draw Date,Time of day,Numbers,Played,My Numbers
-Tuesday,27-Dec-22,Evening,"[4, 7, 9, 13, 22, 24, 25, 27, 29, 32, 35, 43, 46, 50, 51, 54, 56, 58, 63, 64]",FALSE,
-Wednesday,28-Dec-22,Midday,"[9, 11, 15, 21, 24, 25, 36, 38, 40, 44, 47, 50, 51, 55, 56, 57, 59, 64, 65, 69]",FALSE,
+Weekday,Draw Date,Time of day,Numbers,Played,My Numbers,Bet Amounts,Matched Numbers,Correct vs Picked
+Tuesday,27-Dec-22,Evening,"[4, 7, 9, 13, 22, 24, 25, 27, 29, 32, 35, 43, 46, 50, 51, 54, 56, 58, 63, 64]",FALSE,,,,
+Wednesday,28-Dec-22,Midday,"[9, 11, 15, 21, 24, 25, 36, 38, 40, 44, 47, 50, 51, 55, 56, 57, 59, 64, 65, 69]",FALSE,,,,
