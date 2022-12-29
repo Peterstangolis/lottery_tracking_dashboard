@@ -1,4 +1,4 @@
-Weekday,Draw Date,Time of day,Numbers,Played,My Numbers,Bet Amounts,Matched Numbers,Correct vs Picked
-Tuesday,27-Dec-22,Evening,"[4, 7, 9, 13, 22, 24, 25, 27, 29, 32, 35, 43, 46, 50, 51, 54, 56, 58, 63, 64]",False,,,,
-Wednesday,28-Dec-22,Midday,"[9, 11, 15, 21, 24, 25, 36, 38, 40, 44, 47, 50, 51, 55, 56, 57, 59, 64, 65, 69]",False,,,,
-Wednesday,28 Dec 2022,Evening,"[1, 2, 7, 8, 17, 28, 33, 34, 36, 38, 41, 42, 44, 45, 46, 47, 48, 57, 60, 69]",True,"[[8, 12, 44, 47, 69], [5, 11, 23]]","[2.0, 2.0]","[[8, 44, 47, 69], []]","['4/5', '0/3']"
+Weekday,Draw Date,Time of day,Numbers,Played,My Numbers,Bet Amounts,Matched Numbers,Correct vs Picked,Winnings
+Tuesday,27-Dec-22,Evening,"[4, 7, 9, 13, 22, 24, 25, 27, 29, 32, 35, 43, 46, 50, 51, 54, 56, 58, 63, 64]",FALSE,,,,,
+Wednesday,28-Dec-22,Midday,"[9, 11, 15, 21, 24, 25, 36, 38, 40, 44, 47, 50, 51, 55, 56, 57, 59, 64, 65, 69]",FALSE,,,,,
+Wednesday,28-Dec-22,Evening,"[1, 2, 7, 8, 17, 28, 33, 34, 36, 38, 41, 42, 44, 45, 46, 47, 48, 57, 60, 69]",TRUE,"[[8, 12, 44, 47, 69], [5, 11, 23]]","[2.0, 2.0]","[[8, 44, 47, 69], []]","['4/5', '0/3']",10
