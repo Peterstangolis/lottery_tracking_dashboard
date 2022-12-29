@@ -51,12 +51,13 @@ if played_lottery == True:
 
     matched_vs_picked_one = f'{len(matched_picks_one)}/{len(my_numbers[0])}'
     matched_vs_picked_two = f'{len(matched_picks_two)}/{len(my_numbers[1])}'
-    matched_vs_picked_three = f'{len(matched_picks_two)}/{len(my_numbers[2])}'
+    matched_vs_picked_three = f'{len(matched_picks_three)}/{len(my_numbers[2])}'
 else:
     my_numbers = None
     bet_amount = None
     matched_picks_one = None
     matched_picks_two = None
+    matched_picks_three = None
     matched_vs_picked_one = None
     matched_vs_picked_two = None
     matched_vs_picked_three = None
@@ -81,6 +82,7 @@ last_winning_numbers = last_winning_numbers.replace("[", "", 3)
 last_winning_numbers = last_winning_numbers.replace("]", "", 2)
 last_winning_numbers = [int(e) for e in last_winning_numbers.split(",")]
 print(last_winning_numbers)
+print(keno_df["Draw Date"].tail(1))
 
 
 
