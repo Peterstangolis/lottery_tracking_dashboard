@@ -40,23 +40,26 @@ for n in nums[0].find_all("li"):
 
 print(keno_numbers)
 
-played_lottery = False
+played_lottery = True
 if played_lottery == True:
-    my_numbers = [[8, 12, 44, 47, 69],[5, 11, 23]]
-    bet_amount = [2.00, 2.00]
+    my_numbers = [[7,15,45],[20,23,37,40,68],[4,16,32,50,63]]
+    bet_amount = [2.00, 2.00, 2.00]
 
     matched_picks_one = [x for x in my_numbers[0] if x in keno_numbers]
     matched_picks_two = [x for x in my_numbers[1] if x in keno_numbers]
+    matched_picks_three = [x for x in my_numbers[2] if x in keno_numbers]
 
     matched_vs_picked_one = f'{len(matched_picks_one)}/{len(my_numbers[0])}'
     matched_vs_picked_two = f'{len(matched_picks_two)}/{len(my_numbers[1])}'
+    matched_vs_picked_three = f'{len(matched_picks_two)}/{len(my_numbers[2])}'
 else:
     my_numbers = None
     bet_amount = None
     matched_picks_one = None
     matched_picks_two = None
     matched_vs_picked_one = None
-    Matched_vs_picked_two = None
+    matched_vs_picked_two = None
+    matched_vs_picked_three = None
 
 ## New Row to Add to CSV file
 new_row = {'Weekday' : last_result_list[2] ,
@@ -66,8 +69,8 @@ new_row = {'Weekday' : last_result_list[2] ,
            'Played' : played_lottery,
            'My Numbers': my_numbers,
            'Bet Amounts': bet_amount,
-           'Matched Numbers' : [matched_picks_one, matched_picks_two],
-           'Correct vs Picked' : [matched_vs_picked_one, matched_vs_picked_two]
+           'Matched Numbers' : [matched_picks_one, matched_picks_two, matched_picks_three],
+           'Correct vs Picked' : [matched_vs_picked_one, matched_vs_picked_two, matched_vs_picked_three]
            }
 
 
