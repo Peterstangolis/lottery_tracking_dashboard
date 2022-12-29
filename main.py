@@ -40,7 +40,7 @@ for n in nums[0].find_all("li"):
 
 print(keno_numbers)
 
-played_lottery = True
+played_lottery = False
 if played_lottery == True:
     my_numbers = [[8, 12, 44, 47, 69],[5, 11, 23]]
     bet_amount = [2.00, 2.00]
