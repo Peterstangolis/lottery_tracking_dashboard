@@ -43,22 +43,23 @@ print(keno_numbers)
 
 played_lottery = True
 if played_lottery == True:
-    my_numbers = [[5, 17, 43, 55, 59],[25, 28, 49, 51, 61],[6, 19, 46, 57, 58],[16, 26, 60], [24, 44, 61] ]
-    bet_amount = [2.00, 2.00, 2.00, 2.00, 2.00]
+    my_numbers = [[],[]]
+    bet_amount = [2.00, 2.00]
 
     matched_picks_one = [x for x in my_numbers[0] if x in keno_numbers]
     matched_picks_two = [x for x in my_numbers[1] if x in keno_numbers]
-    matched_picks_three = [x for x in my_numbers[2] if x in keno_numbers]
-    matched_picks_four = [x for x in my_numbers[3] if x in keno_numbers]
-    matched_picks_five = [x for x in my_numbers[4] if x in keno_numbers]
+    #matched_picks_three = [x for x in my_numbers[2] if x in keno_numbers]
+    #matched_picks_four = [x for x in my_numbers[3] if x in keno_numbers]
+    #matched_picks_five = [x for x in my_numbers[4] if x in keno_numbers]
 
     matched_vs_picked_one = f'{len(matched_picks_one)}/{len(my_numbers[0])}'
     matched_vs_picked_two = f'{len(matched_picks_two)}/{len(my_numbers[1])}'
-    matched_vs_picked_three = f'{len(matched_picks_three)}/{len(my_numbers[2])}'
-    matched_vs_picked_four = f'{len(matched_picks_three)}/{len(my_numbers[3])}'
-    matched_vs_picked_five = f'{len(matched_picks_three)}/{len(my_numbers[4])}'
+    #matched_vs_picked_three = f'{len(matched_picks_three)}/{len(my_numbers[2])}'
+    #matched_vs_picked_four = f'{len(matched_picks_four)}/{len(my_numbers[3])}'
+    #matched_vs_picked_five = f'{len(matched_picks_five)}/{len(my_numbers[4])}'
 
-    pick_method = "Algorithm"
+    pick_method = "App Quickpick"
+
 else:
     my_numbers = None
     bet_amount = None
@@ -79,8 +80,12 @@ new_row = {'Weekday' : last_result_list[2] ,
            'Played' : played_lottery,
            'My Numbers': my_numbers,
            'Bet Amounts': bet_amount,
-           'Matched Numbers' : [matched_picks_one, matched_picks_two, matched_picks_three, matched_picks_four, matched_picks_five],
-           'Correct vs Picked' : [matched_vs_picked_one, matched_vs_picked_two, matched_vs_picked_three, matched_vs_picked_four, matched_vs_picked_five],
+           'Matched Numbers' : [matched_picks_one, matched_picks_two,
+                                #matched_picks_three, matched_picks_four, matched_picks_five
+                                ],
+           'Correct vs Picked' : [matched_vs_picked_one, matched_vs_picked_two
+               #, matched_vs_picked_three, matched_vs_picked_four, matched_vs_picked_five
+                                  ],
            'Pick Method' : pick_method
            }
 
@@ -88,11 +93,15 @@ new_row = {'Weekday' : last_result_list[2] ,
 keno_df = pd.read_csv('data/keno_lottery_stats.csv')
 
 last_winning_numbers = keno_df["Numbers"].iloc[-1]
+print(last_winning_numbers)
 last_winning_numbers = last_winning_numbers.replace("[", "", 3)
 last_winning_numbers = last_winning_numbers.replace("]", "", 2)
 last_winning_numbers = [int(e) for e in last_winning_numbers.split(",")]
 print(last_winning_numbers)
 print(keno_df["Draw Date"].tail(1))
+
+print()
+print(new_row)
 
 
 
