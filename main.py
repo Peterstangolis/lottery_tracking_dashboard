@@ -40,9 +40,9 @@ for n in nums[0].find_all("li"):
 
 print(keno_numbers)
 
-played_lottery = True
+played_lottery = False
 if played_lottery == True:
-    my_numbers = [[7,15,45],[20,23,37,40,68],[4,16,32,50,63]]
+    my_numbers = [[],[],[]]
     bet_amount = [2.00, 2.00, 2.00]
 
     matched_picks_one = [x for x in my_numbers[0] if x in keno_numbers]
