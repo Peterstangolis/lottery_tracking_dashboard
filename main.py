@@ -52,6 +52,8 @@ if played_lottery == True:
     matched_vs_picked_one = f'{len(matched_picks_one)}/{len(my_numbers[0])}'
     matched_vs_picked_two = f'{len(matched_picks_two)}/{len(my_numbers[1])}'
     matched_vs_picked_three = f'{len(matched_picks_three)}/{len(my_numbers[2])}'
+
+    pick_method = "App Quickpick"
 else:
     my_numbers = None
     bet_amount = None
@@ -62,6 +64,8 @@ else:
     matched_vs_picked_two = None
     matched_vs_picked_three = None
 
+    pick_method = None
+
 ## New Row to Add to CSV file
 new_row = {'Weekday' : last_result_list[2] ,
            'Draw Date' : last_result_list[3],
@@ -71,7 +75,8 @@ new_row = {'Weekday' : last_result_list[2] ,
            'My Numbers': my_numbers,
            'Bet Amounts': bet_amount,
            'Matched Numbers' : [matched_picks_one, matched_picks_two, matched_picks_three],
-           'Correct vs Picked' : [matched_vs_picked_one, matched_vs_picked_two, matched_vs_picked_three]
+           'Correct vs Picked' : [matched_vs_picked_one, matched_vs_picked_two, matched_vs_picked_three],
+           'Pick Method' : pick_method
            }
 
 
