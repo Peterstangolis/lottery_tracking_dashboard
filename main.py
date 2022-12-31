@@ -21,7 +21,7 @@ soup_guru_2 = BS(lottery_guru.text, "lxml")
 ## Retrieve all the cards from the site
 lottery_cards = soup_guru_2.find_all('div', class_ = 'lg-card lg-link')
 
-keno_card = lottery_cards[7]
+keno_card = lottery_cards[6]
 
 draw_dates = keno_card.find_all("div", class_="lg-time")
 
@@ -41,9 +41,9 @@ for n in nums[0].find_all("li"):
 
 print(keno_numbers)
 
-played_lottery = True
+played_lottery = False
 if played_lottery == True:
-    my_numbers = [[],[]]
+    my_numbers = [[32,40,42],[22,27,40]]
     bet_amount = [2.00, 2.00]
 
     matched_picks_one = [x for x in my_numbers[0] if x in keno_numbers]
