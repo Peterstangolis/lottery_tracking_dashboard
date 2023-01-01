@@ -67,15 +67,15 @@ def matched_numbers(my_picks, played_lottery):
 
         matched_picks_one = [x for x in my_picks[0] if x in keno_numbers]
         matched_picks_two = [x for x in my_picks[1] if x in keno_numbers]
-        #matched_picks_three = [x for x in my_picks[2] if x in keno_numbers]
-        #matched_picks_four = [x for x in my_picks[3] if x in keno_numbers]
-        #matched_picks_five = [x for x in my_picks[4] if x in keno_numbers]
+        matched_picks_three = [x for x in my_picks[2] if x in keno_numbers]
+        matched_picks_four = [x for x in my_picks[3] if x in keno_numbers]
+        matched_picks_five = [x for x in my_picks[4] if x in keno_numbers]
 
         matched_vs_picked_one = f'{len(matched_picks_one)}/{len(my_picks[0])}'
         matched_vs_picked_two = f'{len(matched_picks_two)}/{len(my_picks[1])}'
-        #matched_vs_picked_three = f'{len(matched_picks_three)}/{len(my_picks[2])}'
-        #matched_vs_picked_four = f'{len(matched_picks_four)}/{len(my_picks[3])}'
-        #matched_vs_picked_five = f'{len(matched_picks_five)}/{len(my_picks[4])}'
+        matched_vs_picked_three = f'{len(matched_picks_three)}/{len(my_picks[2])}'
+        matched_vs_picked_four = f'{len(matched_picks_four)}/{len(my_picks[3])}'
+        matched_vs_picked_five = f'{len(matched_picks_five)}/{len(my_picks[4])}'
 
     else:
         matched_picks_one = None
@@ -90,13 +90,15 @@ def matched_numbers(my_picks, played_lottery):
         matched_vs_picked_four = None
         matched_vs_picked_five = None
 
-    return keno_numbers, last_result_list, matched_picks_one, matched_picks_two, matched_vs_picked_one, matched_vs_picked_two
+    return keno_numbers, last_result_list, matched_picks_one, matched_picks_two, matched_picks_three, matched_picks_four, matched_picks_five,\
+           matched_vs_picked_one, matched_vs_picked_two, matched_vs_picked_three, matched_vs_picked_four, matched_vs_picked_five
 
 
 ## New Row to Add to CSV file
 def new_row_to_csv(played_lottery, bet_amounts, pick_method, my_picks):
     print("New Row")
-    keno_numbers, last_result_list, matched_picks_one, matched_picks_two, matched_vs_picked_one, matched_vs_picked_two = matched_numbers(my_picks=my_picks, played_lottery=played_lottery)
+    keno_numbers, last_result_list, matched_picks_one, matched_picks_two, matched_picks_three, matched_picks_four, matched_picks_five,\
+    matched_vs_picked_one, matched_vs_picked_two, matched_vs_picked_three, matched_vs_picked_four, matched_vs_picked_five = matched_numbers(my_picks=my_picks, played_lottery=played_lottery)
 
     new_row = {'Weekday' : last_result_list[2] ,
                'Draw Date' : last_result_list[3],
@@ -123,7 +125,8 @@ def new_row_to_csv(played_lottery, bet_amounts, pick_method, my_picks):
 def update_csv(played_lottery, bet_amounts, pick_method, my_picks):
 
     new_row = new_row_to_csv(played_lottery=played_lottery, bet_amounts=bet_amounts, pick_method=pick_method, my_picks=my_numbers)
-    keno_numbers, last_result_list, matched_picks_one, matched_picks_two, matched_vs_picked_one, matched_vs_picked_two = matched_numbers(my_picks=my_picks, played_lottery=played_lottery)
+    keno_numbers, last_result_list, matched_picks_one, matched_picks_two, matched_picks_three, matched_picks_four, matched_picks_five, \
+    matched_vs_picked_one, matched_vs_picked_two, matched_vs_picked_three, matched_vs_picked_four, matched_vs_picked_five = matched_numbers(my_picks=my_picks, played_lottery=played_lottery)
 
     keno_df = pd.read_csv('data/keno_lottery_stats.csv')
 
@@ -147,7 +150,7 @@ def update_csv(played_lottery, bet_amounts, pick_method, my_picks):
 
 
 if __name__ == '__main__':
-    update_csv(played_lottery=played_lottery, bet_amounts=bet_amounts, pick_method=pick_method, my_picks=my_numbers)
+    update_csv(played_lottery=played_lottery, bet_amounts=bet_amounts, pick_method=pick_method[1], my_picks=my_numbers)
 
 
 
