@@ -2,6 +2,14 @@ url_lottery_guru = 'https://lotteryguru.com/ontario-lottery-results'
 
 keno_logo_link = 'https://lotteryguru.com/pict/96850/ca-keno-2x-png'
 
+played_lottery = False
+
+my_numbers = [[],[]]
+
+pick_method = [None, "Algorithm", "App Quickpick"]
+
+bet_amounts = []
+
 list_of_lotteries = {
     "Lotto 6/49": {"selections": 6,
                    "range_of_nums": [1, 49]

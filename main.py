@@ -1,5 +1,5 @@
 ## import variables
-from variables import url_lottery_guru, keno_logo_link
+from variables import url_lottery_guru, keno_logo_link, played_lottery, my_numbers, pick_method, bet_amounts
 from lottery_number_generator import list_of_nums
 
 ## Import Libraries
@@ -11,115 +11,143 @@ import lxml
 import pandas as pd
 
 
-lottery_guru = requests.get(url_lottery_guru)
+def scrape_lottery_cards(url):
+    lottery_guru = requests.get(url)
 
-if lottery_guru.status_code == 200:
-    print("Authorized")
+    if lottery_guru.status_code == 200:
+        print("Scrape Function")
 
-soup_guru_2 = BS(lottery_guru.text, "lxml")
+    soup_guru = BS(lottery_guru.text, "lxml")
 
-## Retrieve all the cards from the site
-lottery_cards = soup_guru_2.find_all('div', class_ = 'lg-card lg-link')
+    ## Retrieve all the cards from the site
+    lottery_cards = soup_guru.find_all('div', class_ = 'lg-card lg-link')
 
-keno_card = lottery_cards[6]
+    return lottery_cards
 
-draw_dates = keno_card.find_all("div", class_="lg-time")
+def keno_items():
+    print("Keno Items")
+    lottery_cards = scrape_lottery_cards(url_lottery_guru)
 
-last_result_date = draw_dates[0].text.strip()
-last_result_list = last_result_date.split("\n")
+    results = dict()
+    for n in [7,6]:
 
-next_result_date = draw_dates[1].text.strip()
-next_result_list = next_result_date.split("\n")
+        keno_card = lottery_cards[n]
+        ## Get the latest Keno Winning Numbers
+        numbers = keno_card.find_all("ul", class_="lg-numbers")
+        keno_numbers = list()
+        for num in numbers[0].find_all("li"):
+            keno_numbers.append(int(num.text))
+            draw_dates = keno_card.find_all("div", class_="lg-time")
+            last_result_date = draw_dates[0].text.strip()
+            last_result_list = last_result_date.split("\n")
+            next_result_date = draw_dates[1].text.strip()
+            next_result_list = next_result_date.split("\n")
+        results[f"card_{n}"] = [keno_numbers, last_result_list, next_result_list]
 
 
-## Get the latest Keno Winning Numbers
-nums = keno_card.find_all("ul", class_="lg-numbers")
+                # draw_dates = keno_card.find_all("div", class_="lg-time")
+                # last_result_date = draw_dates[0].text.strip()
+                # last_result_list = last_result_date.split("\n")
+                # next_result_date = draw_dates[1].text.strip()
+                # next_result_list = next_result_date.split("\n")
 
-keno_numbers = list()
-for n in nums[0].find_all("li"):
-    keno_numbers.append(int(n.text))
+    keys = list(results.keys())
+    if len(results[keys[0]][0]) == 20:
+        return results[keys[0]][0], results[keys[0]][1], results[keys[0]][2]
+    else:
+        return results[keys[1]][0], results[keys[1]][1], results[keys[1]][2]
 
-print(keno_numbers)
 
-played_lottery = False
-if played_lottery == True:
-    my_numbers = [[32,40,42],[22,27,40]]
-    bet_amount = [2.00, 2.00]
+def matched_numbers(my_picks, played_lottery):
+    print("Matched Numbers")
 
-    matched_picks_one = [x for x in my_numbers[0] if x in keno_numbers]
-    matched_picks_two = [x for x in my_numbers[1] if x in keno_numbers]
-    #matched_picks_three = [x for x in my_numbers[2] if x in keno_numbers]
-    #matched_picks_four = [x for x in my_numbers[3] if x in keno_numbers]
-    #matched_picks_five = [x for x in my_numbers[4] if x in keno_numbers]
+    keno_numbers, last_result_list, next_result_list = keno_items()
 
-    matched_vs_picked_one = f'{len(matched_picks_one)}/{len(my_numbers[0])}'
-    matched_vs_picked_two = f'{len(matched_picks_two)}/{len(my_numbers[1])}'
-    #matched_vs_picked_three = f'{len(matched_picks_three)}/{len(my_numbers[2])}'
-    #matched_vs_picked_four = f'{len(matched_picks_four)}/{len(my_numbers[3])}'
-    #matched_vs_picked_five = f'{len(matched_picks_five)}/{len(my_numbers[4])}'
+    if played_lottery:
 
-    pick_method = "App Quickpick"
+        matched_picks_one = [x for x in my_picks[0] if x in keno_numbers]
+        matched_picks_two = [x for x in my_picks[1] if x in keno_numbers]
+        #matched_picks_three = [x for x in my_picks[2] if x in keno_numbers]
+        #matched_picks_four = [x for x in my_picks[3] if x in keno_numbers]
+        #matched_picks_five = [x for x in my_picks[4] if x in keno_numbers]
 
-else:
-    my_numbers = None
-    bet_amount = None
-    matched_picks_one = None
-    matched_picks_two = None
-    matched_picks_three = None
-    matched_vs_picked_one = None
-    matched_vs_picked_two = None
-    matched_vs_picked_three = None
+        matched_vs_picked_one = f'{len(matched_picks_one)}/{len(my_picks[0])}'
+        matched_vs_picked_two = f'{len(matched_picks_two)}/{len(my_picks[1])}'
+        #matched_vs_picked_three = f'{len(matched_picks_three)}/{len(my_picks[2])}'
+        #matched_vs_picked_four = f'{len(matched_picks_four)}/{len(my_picks[3])}'
+        #matched_vs_picked_five = f'{len(matched_picks_five)}/{len(my_picks[4])}'
 
-    pick_method = None
+    else:
+        matched_picks_one = None
+        matched_picks_two = None
+        matched_picks_three = None
+        matched_picks_four = None
+        matched_picks_five = None
+
+        matched_vs_picked_one = None
+        matched_vs_picked_two = None
+        matched_vs_picked_three = None
+        matched_vs_picked_four = None
+        matched_vs_picked_five = None
+
+    return keno_numbers, last_result_list, matched_picks_one, matched_picks_two, matched_vs_picked_one, matched_vs_picked_two
+
 
 ## New Row to Add to CSV file
-new_row = {'Weekday' : last_result_list[2] ,
-           'Draw Date' : last_result_list[3],
-           'Time of day' : last_result_list[-1] ,
-           'Numbers' : keno_numbers,
-           'Played' : played_lottery,
-           'My Numbers': my_numbers,
-           'Bet Amounts': bet_amount,
-           'Matched Numbers' : [matched_picks_one, matched_picks_two,
-                                #matched_picks_three, matched_picks_four, matched_picks_five
-                                ],
-           'Correct vs Picked' : [matched_vs_picked_one, matched_vs_picked_two
-               #, matched_vs_picked_three, matched_vs_picked_four, matched_vs_picked_five
-                                  ],
-           'Pick Method' : pick_method
-           }
+def new_row_to_csv(played_lottery, bet_amounts, pick_method, my_picks):
+    print("New Row")
+    keno_numbers, last_result_list, matched_picks_one, matched_picks_two, matched_vs_picked_one, matched_vs_picked_two = matched_numbers(my_picks=my_picks, played_lottery=played_lottery)
+
+    new_row = {'Weekday' : last_result_list[2] ,
+               'Draw Date' : last_result_list[3],
+               'Time of day' : last_result_list[-1] ,
+               'Numbers' : keno_numbers,
+               'Played' : played_lottery,
+               'My Numbers': my_numbers,
+               'Bet Amounts': bet_amounts,
+               'Matched Numbers' : [matched_picks_one
+                                , matched_picks_two
+
+                                #, matched_picks_three, matched_picks_four, matched_picks_five
+                                    ],
+               'Correct vs Picked' : [matched_vs_picked_one
+                                    , matched_vs_picked_two
+                   #, matched_vs_picked_three, matched_vs_picked_four, matched_vs_picked_five
+                                      ],
+               'Pick Method' : pick_method
+               }
+
+    return new_row
 
 
-keno_df = pd.read_csv('data/keno_lottery_stats.csv')
+def update_csv(played_lottery, bet_amounts, pick_method, my_picks):
 
-last_winning_numbers = keno_df["Numbers"].iloc[-1]
-print(last_winning_numbers)
-last_winning_numbers = last_winning_numbers.replace("[", "", 3)
-last_winning_numbers = last_winning_numbers.replace("]", "", 2)
-last_winning_numbers = [int(e) for e in last_winning_numbers.split(",")]
-print(last_winning_numbers)
-print(keno_df["Draw Date"].tail(1))
+    new_row = new_row_to_csv(played_lottery=played_lottery, bet_amounts=bet_amounts, pick_method=pick_method, my_picks=my_numbers)
+    keno_numbers, last_result_list, matched_picks_one, matched_picks_two, matched_vs_picked_one, matched_vs_picked_two = matched_numbers(my_picks=my_picks, played_lottery=played_lottery)
 
-print()
-print(new_row)
+    keno_df = pd.read_csv('data/keno_lottery_stats.csv')
+
+    last_winning_numbers = keno_df["Numbers"].iloc[-1]
+    last_winning_numbers = last_winning_numbers.replace("[", "", 3)
+    last_winning_numbers = last_winning_numbers.replace("]", "", 2)
+    last_winning_numbers = [int(e) for e in last_winning_numbers.split(",")]
+    print(keno_df["Draw Date"].tail(1), keno_df["Time of day"].tail(1))
 
 
+    ## Add the new row of Keno numbers to the file if the last numbers do not equal the winning numbers
+    if last_winning_numbers == keno_numbers:
+        print("No Draw Yet")
+    else:
+        print("Next lottery draw has occurred")
+        keno_df = keno_df.append(new_row, ignore_index=True)
 
-## Add the new row of Keno numbers to the file if the last numbers do not equal the winning numbers
-if last_winning_numbers == keno_numbers:
-    print("No Draw Yet")
-else:
-    print("Next lottery draw has occurred")
-    keno_df = keno_df.append(new_row, ignore_index=True)
-
-    ## Save the updated file to the data folder
-    keno_df.to_csv('data/keno_lottery_stats.csv', index=False)
-
+        ## Save the updated file to the data folder
+        keno_df.to_csv('data/keno_lottery_stats.csv', index=False)
 
 
 
 if __name__ == '__main__':
-    print(" ")
+    update_csv(played_lottery=played_lottery, bet_amounts=bet_amounts, pick_method=pick_method, my_picks=my_numbers)
 
 
 

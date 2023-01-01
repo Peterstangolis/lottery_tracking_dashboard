@@ -2,6 +2,7 @@
 
 
 def list_of_nums(start, stop, selections, lines):
+    from random import choice
     lines_played = dict()
     for l in range(lines):
         #print(f"Line_{l}")
