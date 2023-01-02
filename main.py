@@ -1,6 +1,7 @@
 ## import variables
 from variables import url_lottery_guru, keno_logo_link, played_lottery, my_numbers, pick_method, bet_amounts
 from lottery_number_generator import list_of_nums
+from lottery_number_occurrence import drawn_number_occurrences
 
 ## Import Libraries
 import datetime as dt
@@ -172,7 +173,7 @@ def update_csv(played_lottery, bet_amounts, pick_method, my_picks):
     matched_vs_picked_one, matched_vs_picked_two, matched_vs_picked_three, matched_vs_picked_four, matched_vs_picked_five, \
     matched_vs_picked_six, matched_vs_picked_seven, matched_vs_picked_eight, matched_vs_picked_nine, matched_vs_picked_ten = matched_numbers(my_picks=my_picks, played_lottery=played_lottery)
 
-    keno_df = pd.read_csv('data/keno_lottery_stats.csv')
+    keno_df = pd.read_csv('C:/Users/pstan/Documents/Continuing Education Data/lottery_tracking_dashboard/data/keno_lottery_stats.csv')
 
     last_winning_numbers = keno_df["Numbers"].iloc[-1]
     last_winning_numbers = last_winning_numbers.replace("[", "", 3)
@@ -189,12 +190,13 @@ def update_csv(played_lottery, bet_amounts, pick_method, my_picks):
         keno_df = keno_df.append(new_row, ignore_index=True)
 
         ## Save the updated file to the data folder
-        keno_df.to_csv('data/keno_lottery_stats.csv', index=False)
+        keno_df.to_csv('C:/Users/pstan/Documents/Continuing Education Data/lottery_tracking_dashboard/data/keno_lottery_stats.csv', index=False)
 
 
 
 if __name__ == '__main__':
     update_csv(played_lottery=played_lottery, bet_amounts=bet_amounts, pick_method=pick_method[1], my_picks=my_numbers)
+    drawn_number_occurrences()
     time.sleep(20)
 
 
