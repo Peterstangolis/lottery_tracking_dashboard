@@ -2,9 +2,12 @@ url_lottery_guru = 'https://lotteryguru.com/ontario-lottery-results'
 
 keno_logo_link = 'https://lotteryguru.com/pict/96850/ca-keno-2x-png'
 
-played_lottery = True
+played_lottery = False
 
-my_numbers = [[23, 30, 40],[6, 32, 61],[6, 17, 55], [4, 23, 57], [31, 54, 59], [3, 28, 54], [14, 29, 42], [2, 3, 36], [13, 36, 44], [1, 27, 52]]
+my_numbers = [
+              [],[],[], [], [],
+              [], [], [], [], []
+              ]
 
 pick_method = [None, "Algorithm", "App Quickpick"]
 

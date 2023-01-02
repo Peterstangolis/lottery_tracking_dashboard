@@ -10,6 +10,8 @@ from bs4 import BeautifulSoup as BS
 import lxml
 import pandas as pd
 
+import time
+
 
 def scrape_lottery_cards(url):
     lottery_guru = requests.get(url)
@@ -193,6 +195,7 @@ def update_csv(played_lottery, bet_amounts, pick_method, my_picks):
 
 if __name__ == '__main__':
     update_csv(played_lottery=played_lottery, bet_amounts=bet_amounts, pick_method=pick_method[1], my_picks=my_numbers)
+    time.sleep(20)
 
 
 
