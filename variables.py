@@ -2,7 +2,7 @@ url_lottery_guru = 'https://lotteryguru.com/ontario-lottery-results'
 
 keno_logo_link = 'https://lotteryguru.com/pict/96850/ca-keno-2x-png'
 
-played_lottery = True
+played_lottery = False
 
 my_numbers = [
               [23,52,62],[16, 31, 19],[12, 40, 49], [10, 67, 51], [7, 43, 37],[26, 10, 20]
