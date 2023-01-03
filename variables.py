@@ -2,6 +2,8 @@ url_lottery_guru = 'https://lotteryguru.com/ontario-lottery-results'
 
 keno_logo_link = 'https://lotteryguru.com/pict/96850/ca-keno-2x-png'
 
+data_url = 'https://github.com/Peterstangolis/lottery_tracking_dashboard/blob/main/data/keno_lottery_stats.csv?raw=true'
+
 played_lottery = False
 
 my_numbers = [
@@ -17,6 +19,8 @@ bet_amounts = [
                ]
 
 theory_used = None
+
+keno_numbers = [x for x in range(1, 71)]
 
 list_of_lotteries = {
     "Lotto 6/49": {"selections": 6,

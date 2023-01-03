@@ -1,7 +1,9 @@
 ## import variables
-from variables import url_lottery_guru, keno_logo_link, played_lottery, my_numbers, pick_method, bet_amounts, theory_used
+from variables import url_lottery_guru, keno_logo_link, played_lottery, \
+    my_numbers, pick_method, bet_amounts, theory_used, data_url
 from lottery_number_generator import list_of_nums
 from lottery_number_occurrence import drawn_number_occurrences
+from lottery_analysis import lot_analysis
 
 ## Import Libraries
 import datetime as dt
@@ -120,7 +122,7 @@ def matched_numbers(my_picks, played_lottery):
 
 
 ## New Row to Add to CSV file
-def new_row_to_csv(played_lottery, bet_amounts, pick_method, my_picks):
+def new_row_to_csv(played_lottery, bet_amounts, pick_method, my_picks, theory_used):
     print("New Row")
     keno_numbers, last_result_list, matched_picks_one, matched_picks_two, matched_picks_three, matched_picks_four, matched_picks_five, matched_picks_six, \
     matched_vs_picked_one, matched_vs_picked_two, matched_vs_picked_three, matched_vs_picked_four, matched_vs_picked_five, matched_vs_picked_six, \
@@ -166,9 +168,9 @@ def new_row_to_csv(played_lottery, bet_amounts, pick_method, my_picks):
     return new_row
 
 
-def update_csv(played_lottery, bet_amounts, pick_method, my_picks):
+def update_csv(played_lottery, bet_amounts, pick_method, my_picks, theory_used):
 
-    new_row = new_row_to_csv(played_lottery=played_lottery, bet_amounts=bet_amounts, pick_method=pick_method, my_picks=my_numbers)
+    new_row = new_row_to_csv(played_lottery=played_lottery, bet_amounts=bet_amounts, pick_method=pick_method, my_picks=my_numbers, theory_used=theory_used)
 
     keno_numbers, last_result_list, matched_picks_one, matched_picks_two, matched_picks_three, matched_picks_four, matched_picks_five, matched_picks_six, \
     matched_vs_picked_one, matched_vs_picked_two, matched_vs_picked_three, matched_vs_picked_four, matched_vs_picked_five, matched_vs_picked_six, \
@@ -200,8 +202,9 @@ def update_csv(played_lottery, bet_amounts, pick_method, my_picks):
 
 
 if __name__ == '__main__':
-    update_csv(played_lottery=played_lottery, bet_amounts=bet_amounts, pick_method=pick_method[3], my_picks=my_numbers)
+    update_csv(played_lottery=played_lottery, bet_amounts=bet_amounts, pick_method=pick_method[3], my_picks=my_numbers, theory_used=theory_used)
     drawn_number_occurrences()
+    lot_analysis(data_url)
     time.sleep(10)
 
 
