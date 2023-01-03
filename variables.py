@@ -5,15 +5,15 @@ keno_logo_link = 'https://lotteryguru.com/pict/96850/ca-keno-2x-png'
 played_lottery = False
 
 my_numbers = [
-              [],[],[], [], [],
-              [], [], [], [], []
+              [10,52,62],[49,31,16],[68, 53, 30], [36, 15, 46], [5, 66, 19],[5, 15, 31]
+              #[], [], [], [], []
               ]
 
-pick_method = [None, "Algorithm", "App Quickpick"]
+pick_method = [None, "Algorithm", "App Quickpick", "Manual Picks"]
 
 bet_amounts = [
-                1.00, 1.00, 1.00, 1.00, 1.00
-               ,1.00, 1.00, 1.00, 1.00, 1.00
+                2.00, 2.00, 2.00, 2.00, 2.00, 2.00
+               #,1.00, 1.00, 1.00, 1.00, 1.00
                ]
 
 list_of_lotteries = {

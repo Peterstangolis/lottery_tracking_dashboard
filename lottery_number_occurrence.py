@@ -36,7 +36,7 @@ def drawn_number_occurrences():
             numbers_not_drawn.append(int(num))
 
     ## Save the occurrences
-    w = csv.writer(open("data/lottery_number_occurrences.csv", "w"))
+    w = csv.writer(open("C:/Users/pstan/Documents/Continuing Education Data/lottery_tracking_dashboard/data/lottery_number_occurrences.csv", "w"))
 
     for key, val in number_occurrences_sorted.items():
 
