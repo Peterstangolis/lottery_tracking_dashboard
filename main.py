@@ -1,5 +1,5 @@
 ## import variables
-from variables import url_lottery_guru, keno_logo_link, played_lottery, my_numbers, pick_method, bet_amounts
+from variables import url_lottery_guru, keno_logo_link, played_lottery, my_numbers, pick_method, bet_amounts, theory_used
 from lottery_number_generator import list_of_nums
 from lottery_number_occurrence import drawn_number_occurrences
 
@@ -159,7 +159,8 @@ def new_row_to_csv(played_lottery, bet_amounts, pick_method, my_picks):
                                 #, matched_vs_picked_nine
                                 #, matched_vs_picked_ten
                                       ],
-               'Pick Method' : pick_method
+               'Pick Method' : pick_method,
+               'Theory Used' : theory_used
                }
 
     return new_row

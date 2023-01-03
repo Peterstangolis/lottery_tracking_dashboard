@@ -16,6 +16,8 @@ bet_amounts = [
                #,1.00, 1.00, 1.00, 1.00, 1.00
                ]
 
+theory_used = None
+
 list_of_lotteries = {
     "Lotto 6/49": {"selections": 6,
                    "range_of_nums": [1, 49]
