@@ -27,13 +27,14 @@ def drawn_number_occurrences():
 
     number_occurrences_sorted = sorted(number_occurrences.items(), key=lambda x:x[1], reverse=True)
     number_occurrences_sorted = dict(number_occurrences_sorted)
-    print(number_occurrences_sorted)
+    #print(number_occurrences_sorted)
     numbers_drawn = number_occurrences_sorted.keys()
 
     numbers_not_drawn = []
     for num in keno_range:
         if num not in list_of_numbers:
             numbers_not_drawn.append(int(num))
+    print(numbers_not_drawn)
 
     ## Save the occurrences
     w = csv.writer(open("C:/Users/pstan/Documents/Continuing Education Data/lottery_tracking_dashboard/data/lottery_number_occurrences.csv", "w"))
