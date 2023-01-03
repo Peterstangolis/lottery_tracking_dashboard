@@ -193,7 +193,9 @@ def update_csv(played_lottery, bet_amounts, pick_method, my_picks):
         keno_df = keno_df.append(new_row, ignore_index=True)
 
         ## Save the updated file to the data folder
-        keno_df.to_csv('C:/Users/pstan/Documents/Continuing Education Data/lottery_tracking_dashboard/data/keno_lottery_stats.csv', index=False)
+        keno_df.to_csv('C:/Users/pstan/Documents/Continuing Education Data/lottery_tracking_dashboard/data/keno_lottery_stats.csv',
+                       lineterminator='\n',
+                       index=False)
 
 
 
