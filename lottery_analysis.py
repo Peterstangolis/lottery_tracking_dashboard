@@ -1,6 +1,6 @@
 import pandas as pd
 
-from variables import keno_numbers
+from variables import keno_range
 
 ## Convert the list of strings into lists of integers / floats
 def list_conversion(l):
@@ -74,7 +74,7 @@ def lot_analysis(url):
             after = df2.iloc[n + 1]["Numbers_2"]
             two_game_same = set(before) & set(after)
             two_game_diff = set(before).difference(after)
-            numbers_for_game_selection = set(keno_numbers).difference(two_game_same)
+            numbers_for_game_selection = set(keno_range).difference(two_game_same)
             two_game_comparison.append(numbers_for_game_selection)
 
     ## Add the new column to the dataframe
