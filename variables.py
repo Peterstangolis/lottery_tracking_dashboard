@@ -7,14 +7,14 @@ keno_logo_link = 'https://lotteryguru.com/pict/96850/ca-keno-2x-png'
 data_url = 'https://github.com/Peterstangolis/lottery_tracking_dashboard/blob/main/data/keno_lottery_stats.csv?raw=true'
 
 my_numbers = [
-              [23,52,62],[16, 31, 19],[12, 40, 49], [10, 67, 51], [7, 43, 37],[26, 10, 20]
+              [],[],[], [], [],[]
               #[], [], [], [], []
               ]
 
 pick_method = [None, "Algorithm", "App Quickpick", "Manual Picks"]
 
 bet_amounts = [
-                2.00, 2.00, 2.00, 2.00, 2.00, 2.00
+               # 2.00, 2.00, 2.00, 2.00, 2.00, 2.00
                #,1.00, 1.00, 1.00, 1.00, 1.00
                ]
 

@@ -214,7 +214,7 @@ def update_csv(played_lottery, bet_amounts, pick_method, my_picks, theory_used):
 
 
 if __name__ == '__main__':
-    update_csv(played_lottery=played_lottery, bet_amounts=bet_amounts, pick_method=pick_method[3], my_picks=my_numbers, theory_used=theory_used)
+    update_csv(played_lottery=played_lottery, bet_amounts=bet_amounts, pick_method=pick_method[0], my_picks=my_numbers, theory_used=theory_used)
     drawn_number_occurrences()
     lot_analysis(data_url)
     time.sleep(10)
