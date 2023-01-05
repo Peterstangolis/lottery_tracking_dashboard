@@ -44,6 +44,21 @@ def odd_vs_even(x):
 
     return odds_evens
 
+## Get a list of consecutive numbers in the lottery draw
+def consecutive_numbers_list(l):
+
+    consecutive_numbers = []
+    for i, n in enumerate(l):
+        if i == len(l)-1:
+            continue
+        else:
+            diff = n - l[i+1]
+            if abs(diff) == 1:
+                cs = [l[i+1], n]
+                consecutive_numbers.append(cs)
+    return consecutive_numbers
+
+
 ## Creating a new dataframe with general lottery analysis
 def lot_analysis(url):
     import math
@@ -84,6 +99,9 @@ def lot_analysis(url):
 
     ## Add the new column to the dataframe
     df2["Two_Game_Number_Comparison"] = two_game_comparison
+
+    ## Add column to find the consecutive numbers of the numbers drawn
+    df2["Consecutive_Numbers"] = df2["Numbers_2"].apply(consecutive_numbers_list)
 
     ## Save the data to a new csv file in the data folder
     df2.to_csv(
