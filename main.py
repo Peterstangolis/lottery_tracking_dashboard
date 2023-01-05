@@ -76,12 +76,12 @@ def matched_numbers(my_picks, played_lottery):
         matched_picks_four = [x for x in my_picks[3] if x in keno_numbers]
         matched_picks_five = [x for x in my_picks[4] if x in keno_numbers]
         matched_picks_six = [x for x in my_picks[5] if x in keno_numbers]
-        #matched_picks_seven = [x for x in my_picks[6] if x in keno_numbers]
-        #matched_picks_eight = [x for x in my_picks[7] if x in keno_numbers]
-        #matched_picks_nine = [x for x in my_picks[8] if x in keno_numbers]
-        #matched_picks_ten = [x for x in my_picks[9] if x in keno_numbers]
-        #matched_picks_eleven = [x for x in my_picks[10] if x in keno_numbers]
-        #matched_picks_twelve = [x for x in my_picks[11] if x in keno_numbers]
+        matched_picks_seven = [x for x in my_picks[6] if x in keno_numbers]
+        matched_picks_eight = [x for x in my_picks[7] if x in keno_numbers]
+        matched_picks_nine = [x for x in my_picks[8] if x in keno_numbers]
+        matched_picks_ten = [x for x in my_picks[9] if x in keno_numbers]
+        matched_picks_eleven = [x for x in my_picks[10] if x in keno_numbers]
+        matched_picks_twelve = [x for x in my_picks[11] if x in keno_numbers]
 
         matched_vs_picked_one = f'{len(matched_picks_one)}/{len(my_picks[0])}'
         matched_vs_picked_two = f'{len(matched_picks_two)}/{len(my_picks[1])}'
@@ -89,12 +89,12 @@ def matched_numbers(my_picks, played_lottery):
         matched_vs_picked_four = f'{len(matched_picks_four)}/{len(my_picks[3])}'
         matched_vs_picked_five = f'{len(matched_picks_five)}/{len(my_picks[4])}'
         matched_vs_picked_six = f'{len(matched_picks_six)}/{len(my_picks[5])}'
-       # matched_vs_picked_seven = f'{len(matched_picks_seven)}/{len(my_picks[6])}'
-       # matched_vs_picked_eight = f'{len(matched_picks_eight)}/{len(my_picks[7])}'
-       # matched_vs_picked_nine = f'{len(matched_picks_nine)}/{len(my_picks[8])}'
-       # matched_vs_picked_ten = f'{len(matched_picks_ten)}/{len(my_picks[9])}'
-      # matched_vs_picked_eleven = f'{len(matched_picks_eleven)}/{len(my_picks[10])}'
-      # matched_vs_picked_twelve = f'{len(matched_picks_twelve)}/{len(my_picks[11])}'
+        matched_vs_picked_seven = f'{len(matched_picks_seven)}/{len(my_picks[6])}'
+        matched_vs_picked_eight = f'{len(matched_picks_eight)}/{len(my_picks[7])}'
+        matched_vs_picked_nine = f'{len(matched_picks_nine)}/{len(my_picks[8])}'
+        matched_vs_picked_ten = f'{len(matched_picks_ten)}/{len(my_picks[9])}'
+        matched_vs_picked_eleven = f'{len(matched_picks_eleven)}/{len(my_picks[10])}'
+        matched_vs_picked_twelve = f'{len(matched_picks_twelve)}/{len(my_picks[11])}'
 
     else:
         matched_picks_one = None
@@ -124,19 +124,21 @@ def matched_numbers(my_picks, played_lottery):
         matched_vs_picked_twelve = None
 
     return keno_numbers, last_result_list, matched_picks_one, matched_picks_two, matched_picks_three, matched_picks_four, matched_picks_five, matched_picks_six, \
-           matched_vs_picked_one, matched_vs_picked_two, matched_vs_picked_three, matched_vs_picked_four, matched_vs_picked_five, matched_vs_picked_six
-        #matched_picks_six, matched_picks_seven, matched_picks_eight, matched_picks_nine, matched_picks_ten, matched_picks_eleven, matched_picks_twelve  \
-        #matched_vs_picked_six, matched_vs_picked_seven, matched_vs_picked_eight, matched_vs_picked_nine, matched_vs_picked_ten, matched_vs_picked_eleven, matched_vs_picked_twelve
+           matched_vs_picked_one, matched_vs_picked_two, matched_vs_picked_three, matched_vs_picked_four, matched_vs_picked_five, matched_vs_picked_six, \
+        matched_picks_six, matched_picks_seven, matched_picks_eight, matched_picks_nine, matched_picks_ten, matched_picks_eleven, matched_picks_twelve,  \
+        matched_vs_picked_six, matched_vs_picked_seven, matched_vs_picked_eight, matched_vs_picked_nine, matched_vs_picked_ten, matched_vs_picked_eleven, matched_vs_picked_twelve
 
 
 ## New Row to Add to CSV file
 def new_row_to_csv(played_lottery, bet_amounts, pick_method, my_picks, theory_used):
     print("New Row")
     keno_numbers, last_result_list, matched_picks_one, matched_picks_two, matched_picks_three, matched_picks_four, matched_picks_five, matched_picks_six, \
+    matched_picks_six, matched_picks_seven, matched_picks_eight, matched_picks_nine, matched_picks_ten, matched_picks_eleven, matched_picks_twelve,  \
     matched_vs_picked_one, matched_vs_picked_two, matched_vs_picked_three, matched_vs_picked_four, matched_vs_picked_five, matched_vs_picked_six, \
+    matched_vs_picked_six, matched_vs_picked_seven, matched_vs_picked_eight, matched_vs_picked_nine, matched_vs_picked_ten, matched_vs_picked_eleven, matched_vs_picked_twelve \
         = matched_numbers(my_picks=my_picks, played_lottery=played_lottery)
     # matched_picks_six, matched_picks_seven, matched_picks_eight, matched_picks_nine, matched_picks_ten, matched_picks_eleven, matched_picks_twelve  \
-    # matched_vs_picked_six, matched_vs_picked_seven, matched_vs_picked_eight, matched_vs_picked_nine, matched_vs_picked_ten, matched_vs_picked_eleven, matched_vs_picked_twelve
+    # matched_vs_picked_six, matched_vs_picked_seven, matched_vs_picked_eight, matched_vs_picked_nine, matched_vs_picked_ten, matched_vs_picked_eleven, matched_vs_picked_twelve \
 
     new_row = {'Weekday' : last_result_list[2] ,
                'Draw Date' : last_result_list[3],
@@ -152,12 +154,12 @@ def new_row_to_csv(played_lottery, bet_amounts, pick_method, my_picks, theory_us
                                 , matched_picks_four
                                 , matched_picks_five
                                 , matched_picks_six
-                                #, matched_picks_seven
-                                #, matched_picks_eight
-                                #, matched_picks_nine
-                                #, matched_picks_ten
-                                #, matched_picks_eleven
-                                #, matched_picks_twelve
+                                , matched_picks_seven
+                                , matched_picks_eight
+                                , matched_picks_nine
+                                , matched_picks_ten
+                                , matched_picks_eleven
+                                , matched_picks_twelve
                                     ],
                'Correct vs Picked' : [
                                   matched_vs_picked_one
@@ -166,12 +168,12 @@ def new_row_to_csv(played_lottery, bet_amounts, pick_method, my_picks, theory_us
                                 , matched_vs_picked_four
                                 , matched_vs_picked_five
                                 , matched_vs_picked_six
-                                #, matched_vs_picked_seven
-                                #, matched_vs_picked_eight
-                                #, matched_vs_picked_nine
-                                #, matched_vs_picked_ten
-                                #, matched_vs_picked_eleven
-                                #, matched_vs_picked_twelve
+                                , matched_vs_picked_seven
+                                , matched_vs_picked_eight
+                                , matched_vs_picked_nine
+                                , matched_vs_picked_ten
+                                , matched_vs_picked_eleven
+                                , matched_vs_picked_twelve
                                       ],
                'Pick Method' : pick_method,
                'Theory Used' : theory_used
@@ -185,8 +187,10 @@ def update_csv(played_lottery, bet_amounts, pick_method, my_picks, theory_used):
     new_row = new_row_to_csv(played_lottery=played_lottery, bet_amounts=bet_amounts, pick_method=pick_method, my_picks=my_numbers, theory_used=theory_used)
 
     keno_numbers, last_result_list, matched_picks_one, matched_picks_two, matched_picks_three, matched_picks_four, matched_picks_five, matched_picks_six, \
+    matched_picks_six, matched_picks_seven, matched_picks_eight, matched_picks_nine, matched_picks_ten, matched_picks_eleven, matched_picks_twelve,  \
     matched_vs_picked_one, matched_vs_picked_two, matched_vs_picked_three, matched_vs_picked_four, matched_vs_picked_five, matched_vs_picked_six, \
-    = matched_numbers(my_picks=my_picks, played_lottery=played_lottery)
+    matched_vs_picked_six, matched_vs_picked_seven, matched_vs_picked_eight, matched_vs_picked_nine, matched_vs_picked_ten, matched_vs_picked_eleven, matched_vs_picked_twelve \
+        = matched_numbers(my_picks=my_picks, played_lottery=played_lottery)
     # matched_picks_six, matched_picks_seven, matched_picks_eight, matched_picks_nine, matched_picks_ten, matched_picks_eleven, matched_picks_twelve  \
     # matched_vs_picked_six, matched_vs_picked_seven, matched_vs_picked_eight, matched_vs_picked_nine, matched_vs_picked_ten, matched_vs_picked_eleven, matched_vs_picked_twelve
 
@@ -214,7 +218,7 @@ def update_csv(played_lottery, bet_amounts, pick_method, my_picks, theory_used):
 
 
 if __name__ == '__main__':
-    update_csv(played_lottery=played_lottery, bet_amounts=bet_amounts, pick_method=pick_method[0], my_picks=my_numbers, theory_used=theory_used)
+    update_csv(played_lottery=played_lottery, bet_amounts=bet_amounts, pick_method=pick_method[3], my_picks=my_numbers, theory_used=theory_used)
     drawn_number_occurrences()
     lot_analysis(data_url)
     time.sleep(10)
