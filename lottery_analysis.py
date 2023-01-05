@@ -58,6 +58,42 @@ def consecutive_numbers_list(l):
                 consecutive_numbers.append(cs)
     return consecutive_numbers
 
+## Return the numbers over 35 vs under
+def over_under(l):
+    over_under_35 = {
+        "over_35": 0,
+        "under_35": 0
+    }
+
+    for n in l:
+        if n > 34:
+            over_under_35["over_35"] += 1
+        else:
+            over_under_35["under_35"] += 1
+
+    return over_under_35
+
+## Return a dictionary that lists the numbers that fall into division of 10
+def tens_category(l):
+    tens = {
+        '0': 0,
+        '1': 0,
+        '2': 0,
+        '3': 0,
+        '4': 0,
+        '5': 0,
+        '6' : 0,
+        '7' : 0
+    }
+
+    for n in l:
+        if len(str(n)) == 1:
+            tens['0'] += 1
+        else:
+            start = str(n)[0]
+            tens[start] += 1
+    return tens
+
 
 ## Creating a new dataframe with general lottery analysis
 def lot_analysis(url):
@@ -102,6 +138,12 @@ def lot_analysis(url):
 
     ## Add column to find the consecutive numbers of the numbers drawn
     df2["Consecutive_Numbers"] = df2["Numbers_2"].apply(consecutive_numbers_list)
+
+    ## Over / under 35 totals
+    df2["Over_Under_35"] = df2["Numbers_2"].apply(over_under)
+
+    ## Tens Category breakdown
+    df2["Tens_Category"] = df2["Numbers_2"].apply(tens_category)
 
     ## Save the data to a new csv file in the data folder
     df2.to_csv(

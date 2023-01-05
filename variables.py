@@ -14,8 +14,8 @@ my_numbers = [
 pick_method = [None, "Algorithm", "App Quickpick", "Manual Picks"]
 
 bet_amounts = [
-               2.00, 2.00, 2.00, 2.00, 2.00, 2.00,
-               2.00, 2.00, 2.00, 2.00, 2.00, 2.00
+               1.00, 1.00, 1.00, 1.00, 1.00, 1.00,
+               1.00, 1.00, 1.00, 1.00, 1.00, 1.00
                ]
 
 theory_used = "Based on Analysis"
