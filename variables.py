@@ -7,8 +7,8 @@ keno_logo_link = 'https://lotteryguru.com/pict/96850/ca-keno-2x-png'
 data_url = 'https://github.com/Peterstangolis/lottery_tracking_dashboard/blob/main/data/keno_lottery_stats.csv?raw=true'
 
 my_numbers = [
-                [6, 21, 46], [7, 27, 48], [8, 30, 55], [3, 24, 61], [4, 36, 47], [9, 19, 40],
-                [2, 12, 58], [5, 38, 60], [12, 34, 49], [3, 18, 52], [6, 32, 67], [7, 50, 64]
+                [6, 18 , 67], [2, 14, 48], [16, 41, 66], [3, 6, 20 ], [11, 14, 52], [36, 46, 65],
+                [5, 16, 64], [10, 19, 60], [12, 40, 68], [28, 31,54 ], [1, 13,42], [16, 18, 61]
               ]
 
 pick_method = [None, "Algorithm", "App Quickpick", "Manual Picks"]
