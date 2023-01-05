@@ -94,6 +94,23 @@ def tens_category(l):
             tens[start] += 1
     return tens
 
+## Correct vs Incorrect picks
+def correct_vs_incorrect(df):
+    correct_incorrect = []
+    for i in range(len(df)):
+        if df.iloc[i]["Played"] == True:
+            my_picks = df.iloc[i]["My_Numbers_2"]
+            #my_picks = list_conversion(my_picks)
+            last_picks = df.iloc[i]["Numbers_2"]
+            #last_picks = list_conversion(last_picks)
+            correct = set(last_picks) & set(my_picks)
+            correct_incorrect.append(round(len(correct) / len(my_picks), 3))
+        else:
+            correct_incorrect.append(0)
+    return correct_incorrect
+
+
+
 
 ## Creating a new dataframe with general lottery analysis
 def lot_analysis(url):
@@ -144,6 +161,9 @@ def lot_analysis(url):
 
     ## Tens Category breakdown
     df2["Tens_Category"] = df2["Numbers_2"].apply(tens_category)
+
+    correct_perc = correct_vs_incorrect(df2)
+    df2["Correct_vs_Incorrect"] = correct_perc
 
     ## Save the data to a new csv file in the data folder
     df2.to_csv(
