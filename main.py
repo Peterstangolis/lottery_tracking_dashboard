@@ -204,6 +204,7 @@ def update_csv(played_lottery, bet_amounts, pick_method, my_picks, theory_used):
 
 
     ## Add the new row of Keno numbers to the file if the last numbers do not equal the winning numbers
+    print(keno_numbers)
     if last_winning_numbers == keno_numbers:
         print("No Draw Yet")
     else:
