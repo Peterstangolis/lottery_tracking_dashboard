@@ -1,4 +1,4 @@
-played_lottery = True
+played_lottery = False
 
 url_lottery_guru = 'https://lotteryguru.com/ontario-lottery-results'
 
@@ -14,7 +14,7 @@ my_numbers = [
 pick_method = [None, "Algorithm", "App Quickpick", "Manual Picks"]
 
 bet_amounts = [
-               1.00, 1.00, 1.00, 1.00, 1.00, 1.00,
+               1.00, 1.00, 2.00, 1.00, 1.00, 1.00,
                1.00, 1.00, 1.00, 1.00, 1.00, 1.00
                ]
 
