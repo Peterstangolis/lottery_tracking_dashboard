@@ -109,7 +109,10 @@ def correct_vs_incorrect(df):
             correct_incorrect.append(0)
     return correct_incorrect
 
-
+## Sum of Numbers
+def sum_of_picks(l):
+    import math
+    return sum(l)
 
 
 ## Creating a new dataframe with general lottery analysis
@@ -164,6 +167,8 @@ def lot_analysis(url):
 
     correct_perc = correct_vs_incorrect(df2)
     df2["Correct_vs_Incorrect"] = correct_perc
+
+    df2["Sum_of_picks"] = df2["Numbers_2"].apply(sum_of_picks)
 
     ## Save the data to a new csv file in the data folder
     df2.to_csv(

@@ -1,4 +1,4 @@
-played_lottery = False
+played_lottery = True
 
 url_lottery_guru = 'https://lotteryguru.com/ontario-lottery-results'
 
@@ -7,17 +7,18 @@ keno_logo_link = 'https://lotteryguru.com/pict/96850/ca-keno-2x-png'
 data_url = 'https://github.com/Peterstangolis/lottery_tracking_dashboard/blob/main/data/keno_lottery_stats.csv?raw=true'
 
 my_numbers = [
-
+                [2, 20, 55], [5, 36, 52], [6, 26, 65], [12, 25, 46], [14, 33, 70], [18, 31, 66],
+                [4, 48, 60], [8, 27,34], [10, 37, 68], [ 12, 18, 31], [55, 67, 2], [4, 21, 48]
               ]
 
 pick_method = [None, "Algorithm", "App Quickpick", "Manual Picks"]
 
 bet_amounts = [
-               #1.00, 1.00, 2.00, 1.00, 1.00, 1.00,
-               #1.00, 1.00, 1.00, 1.00, 1.00, 1.00
+               1.00, 1.00, 1.00, 1.00, 1.00, 1.00,
+               1.00, 1.00, 1.00, 1.00, 1.00, 1.00
                ]
 
-theory_used = None
+theory_used = "Based on Analysis"
 
 keno_range = [x for x in range(1, 71)]
 
