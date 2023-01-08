@@ -1,9 +1,10 @@
 ## import variables
 from variables import url_lottery_guru, keno_logo_link, played_lottery, \
-    my_numbers, pick_method, bet_amounts, theory_used, data_url
+    my_numbers, pick_method, bet_amounts, theory_used, data_url, keno_range, data_analysis_url
 from lottery_number_generator import list_of_nums
 from lottery_number_occurrence import drawn_number_occurrences
 from lottery_analysis import lot_analysis
+from tracking_when_numbers_drawn import numbers_drawn_csv
 
 ## Import Libraries
 import datetime as dt
@@ -234,6 +235,7 @@ if __name__ == '__main__':
     update_csv(played_lottery=played_lottery, bet_amounts=bet_amounts, pick_method=pick_method[3], my_picks=my_numbers, theory_used=theory_used)
     drawn_number_occurrences()
     lot_analysis(data_url)
+    numbers_drawn_csv(url=data_analysis_url, keno_nums=keno_range, col_date="Draw Date", col_nums="Numbers_2")
     time.sleep(6)
 
 

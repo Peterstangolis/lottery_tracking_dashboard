@@ -6,6 +6,9 @@ keno_logo_link = 'https://lotteryguru.com/pict/96850/ca-keno-2x-png'
 
 data_url = 'https://github.com/Peterstangolis/lottery_tracking_dashboard/blob/main/data/keno_lottery_stats.csv?raw=true'
 
+data_analysis_url =  'https://github.com/Peterstangolis/lottery_tracking_dashboard/blob/main/data/keno_lottery_analysis.csv?raw=true'
+
+
 my_numbers = [
         [14, 43, 24, 29, 50],
         [10, 35, 53, 26, 63],
