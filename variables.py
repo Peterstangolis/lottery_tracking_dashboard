@@ -8,6 +8,9 @@ data_url = 'https://github.com/Peterstangolis/lottery_tracking_dashboard/blob/ma
 
 data_analysis_url =  'https://github.com/Peterstangolis/lottery_tracking_dashboard/blob/main/data/keno_lottery_analysis.csv?raw=true'
 
+lott_analysis_csv = 'C:/Users/pstan/Documents/Continuing Education Data/lottery_tracking_dashboard/data/keno_lottery_analysis.csv'
+lott_stats_csv = 'C:/Users/pstan/Documents/Continuing Education Data/lottery_tracking_dashboard/data/keno_lottery_stats.csv'
+
 
 my_numbers = [
         # [14, 43, 24, 29, 50],

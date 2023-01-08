@@ -8,6 +8,7 @@ def numbers_drawn_csv(url, keno_nums, col_date, col_nums):
     df = pd.read_csv(url,
                      index_col=0
                      )
+    print(df.tail(2))
     draw_dates = df[col_date].values
 
     d = pd.DataFrame(np.zeros((len(keno_nums) + 1, len(draw_dates))))
