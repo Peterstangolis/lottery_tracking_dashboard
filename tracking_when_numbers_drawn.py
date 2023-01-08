@@ -13,7 +13,6 @@ def numbers_drawn_csv(url, keno_nums, col_date, col_nums):
     d = pd.DataFrame(np.zeros((len(keno_nums) + 1, len(draw_dates))))
 
     d.columns = draw_dates
-    print(d)
 
     for c in range(len(df)):
         num_list = list_conversion(df.iloc[c][col_nums])
