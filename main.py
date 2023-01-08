@@ -35,7 +35,7 @@ def keno_items():
     lottery_cards = scrape_lottery_cards(url_lottery_guru)
 
     results = dict()
-    for n in [7,6]:
+    for n in [7,6,4]:
 
         keno_card = lottery_cards[n]
         ## Get the latest Keno Winning Numbers
@@ -58,10 +58,13 @@ def keno_items():
                 # next_result_list = next_result_date.split("\n")
 
     keys = list(results.keys())
+
     if len(results[keys[0]][0]) == 20:
         return results[keys[0]][0], results[keys[0]][1], results[keys[0]][2]
-    else:
+    elif len(results[keys[1]][0]) == 20:
         return results[keys[1]][0], results[keys[1]][1], results[keys[1]][2]
+    else:
+        return results[keys[2]][0], results[keys[2]][1], results[keys[2]][2]
 
 
 def matched_numbers(my_picks, played_lottery):
