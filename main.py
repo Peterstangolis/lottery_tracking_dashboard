@@ -23,10 +23,13 @@ def scrape_lottery_cards(url):
     if lottery_guru.status_code == 200:
         print("Scrape Function")
 
-    soup_guru = BS(lottery_guru.text, "lxml")
+        soup_guru = BS(lottery_guru.text, "lxml")
 
-    ## Retrieve all the cards from the site
-    lottery_cards = soup_guru.find_all('div', class_ = 'lg-card lg-link')
+        ## Retrieve all the cards from the site
+        lottery_cards = soup_guru.find_all('div', class_ = 'lg-card lg-link')
+
+    else:
+        print(lottery_guru.status_code)
 
     return lottery_cards
 
@@ -213,6 +216,7 @@ def update_csv(played_lottery, bet_amounts, pick_method, my_picks, theory_used):
     keno_df = pd.read_csv('C:/Users/pstan/Documents/Continuing Education Data/lottery_tracking_dashboard/data/keno_lottery_stats.csv')
 
     last_winning_numbers = keno_df["Numbers"].iloc[-1]
+    print(last_winning_numbers)
     last_winning_numbers = last_winning_numbers.replace("[", "", 3)
     last_winning_numbers = last_winning_numbers.replace("]", "", 2)
     last_winning_numbers = [int(e) for e in last_winning_numbers.split(",")]

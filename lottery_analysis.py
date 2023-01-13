@@ -140,6 +140,7 @@ def lot_analysis(url):
     # a list of numbers that have not been repeat to choose from
     two_game_comparison = [None, ]
     repeated_numbers = [None, ]
+    drawn_once = [None, ]
     for n in range(len(df2)):
         if n != len(df2) - 1:
             before = df2.iloc[n]["Numbers_2"]
@@ -149,9 +150,16 @@ def lot_analysis(url):
             two_game_diff = set(before).difference(after)
             numbers_for_game_selection = set(keno_range).difference(two_game_same)
             two_game_comparison.append(numbers_for_game_selection)
+            numbers_drawn_once = set(after).difference(two_game_same)
+            drawn_once.append(numbers_drawn_once)
+
+
 
     ## Add the repeated numbers for 2 games in a row
     df2["Repeated Numbers"] = repeated_numbers
+
+    ## Add set of numbers drawn once
+    df2["Numbers Not Repeated"] = drawn_once
 
     ## Add the new column to the dataframe
     df2["Two_Game_Number_Comparison"] = two_game_comparison
