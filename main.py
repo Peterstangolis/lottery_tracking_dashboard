@@ -150,7 +150,7 @@ def matched_numbers(my_picks, played_lottery):
 def new_row_to_csv(played_lottery, bet_amounts, pick_method, my_picks, theory_used):
     print("New Row")
     keno_numbers, last_result_list, matched_picks_one, matched_picks_two, matched_picks_three, matched_picks_four, matched_picks_five, matched_picks_six, \
-    matched_picks_seven, matched_picks_eight, matched_picks_nine, matched_picks_ten, matched_picks_eleven, matched_picks_twelve,
+    matched_picks_seven, matched_picks_eight, matched_picks_nine, matched_picks_ten, matched_picks_eleven, matched_picks_twelve, \
     matched_vs_picked_one, matched_vs_picked_two, matched_vs_picked_three, matched_vs_picked_four, matched_vs_picked_five, matched_vs_picked_six, \
     matched_vs_picked_seven, matched_vs_picked_eight, matched_vs_picked_nine, matched_vs_picked_ten, matched_vs_picked_eleven, matched_vs_picked_twelve, \
         = matched_numbers(my_picks=my_picks, played_lottery=played_lottery)
