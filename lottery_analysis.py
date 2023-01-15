@@ -114,6 +114,32 @@ def sum_of_picks(l):
     import math
     return sum(l)
 
+## Break down the numbers drawn in more groupings
+def numbers_grouping(l):
+    from variables import numbers_breakdown
+    l = list_conversion(l)
+    num_groups = {
+    "ODD_1_19" : 0,
+    "EVEN_2_18" : 0,
+    "ODD_21_35" : 0,
+    "EVEN_20_34" : 0,
+    "ODD_37_51" : 0,
+    "EVEN_36_52" : 0,
+    "ODD_53_69" : 0,
+    "EVEN_54_70" : 0
+    }
+    for num in l:
+        for k,v in numbers_breakdown.items():
+            if num in v:
+                if k not in num_groups.keys():
+                    num_groups[k] = 1
+                else:
+                    num_groups[k] += 1
+            else:
+                continue
+    return num_groups
+
+
 
 ## Creating a new dataframe with general lottery analysis
 def lot_analysis(url):
@@ -151,7 +177,7 @@ def lot_analysis(url):
             numbers_for_game_selection = set(keno_range).difference(two_game_same)
             two_game_comparison.append(numbers_for_game_selection)
             numbers_drawn_once = set(after).difference(two_game_same)
-            drawn_once.append(numbers_drawn_once)
+            drawn_once.append(sorted(numbers_drawn_once))
 
 
 
@@ -172,6 +198,9 @@ def lot_analysis(url):
 
     ## Tens Category breakdown
     df2["Tens_Category"] = df2["Numbers_2"].apply(tens_category)
+
+    ## Numbers Groupings
+    df2["Number Groupings"] = df2["Numbers"].apply(numbers_grouping)
 
     correct_perc = correct_vs_incorrect(df2)
     df2["Correct_vs_Incorrect"] = correct_perc
