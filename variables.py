@@ -1,4 +1,4 @@
-played_lottery = True
+played_lottery = False
 
 url_lottery_guru = 'https://lotteryguru.com/ontario-lottery-results'
 
